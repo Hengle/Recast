@@ -23,6 +23,7 @@ namespace FrameWork.Editor.AssetBundle
 
         private int toggleWidth = 250;
         private int toggleHeight = 17;
+        
 
 
         private void OnGUI()
