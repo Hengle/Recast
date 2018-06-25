@@ -1,0 +1,137 @@
+fileFormatVersion: 2
+guid: 85d95f901a7b0aa4986a7e1de5add5c8
+timeCreated: 1528853866
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: COL3BFflag0101
+    100004: COL3BFflag0102
+    100006: COL3BFflag02
+    100008: COL3BFflag03
+    100010: COL3BF01Flag01
+    100012: COL3BF01Flag02
+    100014: COL3BF01Flag03
+    400000: //RootNode
+    400002: COL3BFflag0101
+    400004: COL3BFflag0102
+    400006: COL3BFflag02
+    400008: COL3BFflag03
+    400010: COL3BF01Flag01
+    400012: COL3BF01Flag02
+    400014: COL3BF01Flag03
+    2300000: COL3BFflag0101
+    2300002: COL3BFflag0102
+    2300004: COL3BFflag02
+    2300006: COL3BFflag03
+    2300008: COL3BF01Flag01
+    2300010: COL3BF01Flag02
+    2300012: COL3BF01Flag03
+    3300000: COL3BFflag0101
+    3300002: COL3BFflag0102
+    3300004: COL3BFflag02
+    3300006: COL3BFflag03
+    3300008: COL3BF01Flag01
+    3300010: COL3BF01Flag02
+    3300012: COL3BF01Flag03
+    4300000: COL3BFflag0101
+    4300002: COL3BFflag02
+    4300004: COL3BFflag03
+    4300006: COL3BFflag0102
+    4300008: COL3BF01Flag01
+    4300010: COL3BF01Flag02
+    4300012: COL3BF01Flag03
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: COL3BF01
+    second: {fileID: 2100000, guid: 0c6ce1b94addfa149accc216ac119905, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: COL3BF01B0201
+    second: {fileID: 2100000, guid: ac6570e1fd2715a45bb980360f6313c2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #2'
+    second: {fileID: 2100000, guid: fe4ad34449ef8c84b860e93987d821bd, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 2
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

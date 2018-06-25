@@ -1,0 +1,80 @@
+2017.2.0f3:3.1.0.0
+StandaloneWindows64
+E:/Install File/Unity 2017.2.0/Editor/Data/Managed/UnityEditor.dll
+E:/Install File/Unity 2017.2.0/Editor/Data/Managed/UnityEngine/UnityEngine.dll
+E:/Install File/Unity 2017.2.0/Editor/Data/Managed/UnityEngine/UnityEngine.CoreModule.dll
+E:/Install File/Unity 2017.2.0/Editor/Data/Managed/UnityEngine/UnityEngine.AccessibilityModule.dll
+E:/Install File/Unity 2017.2.0/Editor/Data/Managed/UnityEngine/UnityEngine.ParticleSystemModule.dll
+E:/Install File/Unity 2017.2.0/Editor/Data/Managed/UnityEngine/UnityEngine.PhysicsModule.dll
+E:/Install File/Unity 2017.2.0/Editor/Data/Managed/UnityEngine/UnityEngine.VehiclesModule.dll
+E:/Install File/Unity 2017.2.0/Editor/Data/Managed/UnityEngine/UnityEngine.ClothModule.dll
+E:/Install File/Unity 2017.2.0/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll
+E:/Install File/Unity 2017.2.0/Editor/Data/Managed/UnityEngine/UnityEngine.AnimationModule.dll
+E:/Install File/Unity 2017.2.0/Editor/Data/Managed/UnityEngine/UnityEngine.TextRenderingModule.dll
+E:/Install File/Unity 2017.2.0/Editor/Data/Managed/UnityEngine/UnityEngine.UIModule.dll
+E:/Install File/Unity 2017.2.0/Editor/Data/Managed/UnityEngine/UnityEngine.TerrainPhysicsModule.dll
+E:/Install File/Unity 2017.2.0/Editor/Data/Managed/UnityEngine/UnityEngine.IMGUIModule.dll
+E:/Install File/Unity 2017.2.0/Editor/Data/Managed/UnityEngine/UnityEngine.UnityWebRequestModule.dll
+E:/Install File/Unity 2017.2.0/Editor/Data/Managed/UnityEngine/UnityEngine.UnityWebRequestAudioModule.dll
+E:/Install File/Unity 2017.2.0/Editor/Data/Managed/UnityEngine/UnityEngine.UnityWebRequestTextureModule.dll
+E:/Install File/Unity 2017.2.0/Editor/Data/Managed/UnityEngine/UnityEngine.UnityWebRequestWWWModule.dll
+E:/Install File/Unity 2017.2.0/Editor/Data/Managed/UnityEngine/UnityEngine.ClusterInputModule.dll
+E:/Install File/Unity 2017.2.0/Editor/Data/Managed/UnityEngine/UnityEngine.ClusterRendererModule.dll
+E:/Install File/Unity 2017.2.0/Editor/Data/Managed/UnityEngine/UnityEngine.UNETModule.dll
+E:/Install File/Unity 2017.2.0/Editor/Data/Managed/UnityEngine/UnityEngine.DirectorModule.dll
+E:/Install File/Unity 2017.2.0/Editor/Data/Managed/UnityEngine/UnityEngine.UnityAnalyticsModule.dll
+E:/Install File/Unity 2017.2.0/Editor/Data/Managed/UnityEngine/UnityEngine.CrashReportingModule.dll
+E:/Install File/Unity 2017.2.0/Editor/Data/Managed/UnityEngine/UnityEngine.PerformanceReportingModule.dll
+E:/Install File/Unity 2017.2.0/Editor/Data/Managed/UnityEngine/UnityEngine.UnityConnectModule.dll
+E:/Install File/Unity 2017.2.0/Editor/Data/Managed/UnityEngine/UnityEngine.WebModule.dll
+E:/Install File/Unity 2017.2.0/Editor/Data/Managed/UnityEngine/UnityEngine.ARModule.dll
+E:/Install File/Unity 2017.2.0/Editor/Data/Managed/UnityEngine/UnityEngine.VRModule.dll
+E:/Install File/Unity 2017.2.0/Editor/Data/Managed/UnityEngine/UnityEngine.UIElementsModule.dll
+E:/Install File/Unity 2017.2.0/Editor/Data/Managed/UnityEngine/UnityEngine.StyleSheetsModule.dll
+E:/Install File/Unity 2017.2.0/Editor/Data/Managed/UnityEngine/UnityEngine.AudioModule.dll
+E:/Install File/Unity 2017.2.0/Editor/Data/Managed/UnityEngine/UnityEngine.GameCenterModule.dll
+E:/Install File/Unity 2017.2.0/Editor/Data/Managed/UnityEngine/UnityEngine.GridModule.dll
+E:/Install File/Unity 2017.2.0/Editor/Data/Managed/UnityEngine/UnityEngine.ImageConversionModule.dll
+E:/Install File/Unity 2017.2.0/Editor/Data/Managed/UnityEngine/UnityEngine.InputModule.dll
+E:/Install File/Unity 2017.2.0/Editor/Data/Managed/UnityEngine/UnityEngine.JSONSerializeModule.dll
+E:/Install File/Unity 2017.2.0/Editor/Data/Managed/UnityEngine/UnityEngine.ParticlesLegacyModule.dll
+E:/Install File/Unity 2017.2.0/Editor/Data/Managed/UnityEngine/UnityEngine.Physics2DModule.dll
+E:/Install File/Unity 2017.2.0/Editor/Data/Managed/UnityEngine/UnityEngine.ScreenCaptureModule.dll
+E:/Install File/Unity 2017.2.0/Editor/Data/Managed/UnityEngine/UnityEngine.SpriteMaskModule.dll
+E:/Install File/Unity 2017.2.0/Editor/Data/Managed/UnityEngine/UnityEngine.TerrainModule.dll
+E:/Install File/Unity 2017.2.0/Editor/Data/Managed/UnityEngine/UnityEngine.TilemapModule.dll
+E:/Install File/Unity 2017.2.0/Editor/Data/Managed/UnityEngine/UnityEngine.VideoModule.dll
+E:/Install File/Unity 2017.2.0/Editor/Data/Managed/UnityEngine/UnityEngine.WindModule.dll
+E:/Install File/Unity 2017.2.0/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll
+E:/Install File/Unity 2017.2.0/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll
+E:/Install File/Unity 2017.2.0/Editor/Data/UnityExtensions/Unity/TestRunner/UnityEngine.TestRunner.dll
+E:/Install File/Unity 2017.2.0/Editor/Data/UnityExtensions/Unity/TestRunner/net35/unity-custom/nunit.framework.dll
+E:/Install File/Unity 2017.2.0/Editor/Data/UnityExtensions/Unity/Timeline/RuntimeEditor/UnityEngine.Timeline.dll
+E:/Install File/Unity 2017.2.0/Editor/Data/UnityExtensions/Unity/UIAutomation/UnityEngine.UIAutomation.dll
+E:/Install File/Unity 2017.2.0/Editor/Data/UnityExtensions/Unity/UnityGoogleAudioSpatializer/RuntimeEditor/UnityEngine.GoogleAudioSpatializer.dll
+E:/Install File/Unity 2017.2.0/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll
+E:/Install File/Unity 2017.2.0/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll
+C:/Users/IGG/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.analytics@1.0.1/UnityEngine.Analytics.dll
+C:/Users/IGG/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.purchasing@1.0.1/UnityEngine.Purchasing.dll
+E:/Install File/Unity 2017.2.0/Editor/Data/PlaybackEngines/iOSSupport\UnityEditor.iOS.Extensions.Xcode.dll
+E:/Install File/Unity 2017.2.0/Editor/Data/PlaybackEngines/iOSSupport\UnityEditor.iOS.Extensions.Common.dll
+E:/Install File/Unity 2017.2.0/Editor/Data/UnityExtensions/Unity/GUISystem/Editor/UnityEditor.UI.dll
+E:/Install File/Unity 2017.2.0/Editor/Data/UnityExtensions/Unity/Networking/Editor/UnityEditor.Networking.dll
+E:/Install File/Unity 2017.2.0/Editor/Data/UnityExtensions/Unity/TestRunner/Editor/UnityEditor.TestRunner.dll
+E:/Install File/Unity 2017.2.0/Editor/Data/UnityExtensions/Unity/Timeline/Editor/UnityEditor.Timeline.dll
+E:/Install File/Unity 2017.2.0/Editor/Data/UnityExtensions/Unity/TreeEditor/Editor/UnityEditor.TreeEditor.dll
+E:/Install File/Unity 2017.2.0/Editor/Data/UnityExtensions/Unity/UIAutomation/Editor/UnityEditor.UIAutomation.dll
+E:/Install File/Unity 2017.2.0/Editor/Data/UnityExtensions/Unity/UnityGoogleAudioSpatializer/Editor/UnityEditor.GoogleAudioSpatializer.dll
+E:/Install File/Unity 2017.2.0/Editor/Data/UnityExtensions/Unity/UnityHoloLens/Editor/UnityEditor.HoloLens.dll
+E:/Install File/Unity 2017.2.0/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/Editor/UnityEditor.SpatialTracking.dll
+E:/Install File/Unity 2017.2.0/Editor/Data/UnityExtensions/Unity/UnityVR/Editor/UnityEditor.VR.dll
+E:/Install File/Unity 2017.2.0/Editor/Data/Managed/UnityEditor.Graphs.dll
+E:/Install File/Unity 2017.2.0/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
+E:/Install File/Unity 2017.2.0/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.dll
+E:/Install File/Unity 2017.2.0/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
+E:/Install File/Unity 2017.2.0/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll
+E:/Install File/Unity 2017.2.0/Editor/Data/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
+C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/15.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll
+C:/Users/IGG/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.ads@1.0.7/Editor/UnityEditor.Advertisements.dll
+C:/Users/IGG/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.analytics@1.0.1/Editor/UnityEditor.Analytics.dll
+C:/Users/IGG/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.purchasing@1.0.1/Editor/UnityEditor.Purchasing.dll
