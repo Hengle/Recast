@@ -67,7 +67,7 @@ namespace FrameWork.Editor.AssetBundle
             }
 
             EditorUserBuildSettings.SwitchActiveBuildTarget(group, target);
-            PlayerSettings.bundleVersion = ConstantData.version;
+            PlayerSettings.bundleVersion = ConstantBuildData.version;
 
             // 刷新编辑器
             AssetDatabase.Refresh();

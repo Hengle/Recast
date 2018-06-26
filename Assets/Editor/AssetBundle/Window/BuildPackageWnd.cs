@@ -44,8 +44,14 @@ namespace FrameWork.Editor.AssetBundle
         {
 
             m_Toggles.Add(CreateItem("1. Build AssetBundle", (toggle) => { BuildPipeline.BuildAssetBundles(); }));
-            CreateItem("2. Mark is Debug", (toggle) => { BuildSetting.isDebug = toggle.isOn; });
-            CreateItem("3. Build Package", (toggle) => { BuildSetting.SwitchPlatform(EditorUserBuildSettings.activeBuildTarget); });
+            for(int i = 0; i < m_Toggles.Count; ++ i)
+            {
+                m_Toggles[i].rect.Set(20, i * toggleHeight, toggleWidth, toggleHeight);
+            }
+            Toggle debugToggle = CreateItem("2. Mark is Debug", (toggle) => { BuildSetting.isDebug = toggle.isOn; });
+            debugToggle.rect.Set(20, m_Toggles.Count * toggleHeight, toggleWidth, toggleHeight);
+            Toggle buildToggle = CreateItem("3. Build Package", (toggle) => { BuildSetting.SwitchPlatform(EditorUserBuildSettings.activeBuildTarget); });
+            buildToggle.rect.Set(20, (m_Toggles.Count + 1) * toggleHeight, toggleWidth, toggleHeight);
         }
     }
 }
