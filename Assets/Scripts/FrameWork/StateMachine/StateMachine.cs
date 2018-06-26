@@ -15,6 +15,8 @@ namespace FrameWork.StateMachine
 
         private List<Pair<KT, IState<KT, OT>>> m_PairList = new List<Pair<KT, IState<KT, OT>>>();
 
+        public OT owner{get{return m_Owner;} set{m_Owner = value;}}
+
         private void Assert(bool condition)
         {
             if(!condition)
@@ -28,12 +30,12 @@ namespace FrameWork.StateMachine
             return m_NowKey;
         }
 
-        public State<KT, OT> GetState()
+        public IState<KT, OT> GetState()
         {
             return m_NowState;
         }
 
-        public void AddState(KT keyType, State<KT, OT> state)
+        public void AddState(KT keyType, IState<KT, OT> state)
         {
             bool isSearched = false;
             foreach(var pair in m_PairList)
