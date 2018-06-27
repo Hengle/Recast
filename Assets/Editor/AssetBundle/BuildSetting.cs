@@ -6,6 +6,7 @@ namespace FrameWork.Editor.AssetBundle
     {
 
         public static BuildOptions options = BuildOptions.None;
+        public static BuildAssetBundleOptions optionsAssetBundle = BuildAssetBundleOptions.None;
         private static bool s_IsDebug = false;
         public static bool isDebug
         {
@@ -28,13 +29,14 @@ namespace FrameWork.Editor.AssetBundle
 
         public static string platformName { get; private set; }
 
-        public static string applicationPath
+        public static string dataPath
         {
             get
             {
                 return string.Format("../{0}/{1}", PlayerSettings.productName, platformName);
             }
         }
+
         public static string uploadPath
         {
             get
@@ -43,8 +45,10 @@ namespace FrameWork.Editor.AssetBundle
             }
         }
 
+        public static BuildTarget buildTarget{get;set;}
         public static void SwitchPlatform(BuildTarget target)
         {
+            buildTarget = target;
             BuildTargetGroup group = BuildTargetGroup.Unknown;
             switch(target)
             {
