@@ -29,6 +29,7 @@ namespace FrameWork.Editor.AssetBundle
 
             files.Clear();
             paths.Clear();
+            RecursiveDirectory(dataPath);
             string detailFilePath = assetbundlePath + "/detail.txt";
             if(File.Exists(detailFilePath))
             {
@@ -44,7 +45,9 @@ namespace FrameWork.Editor.AssetBundle
                     continue;
                 }
 
-                string md5 = 
+                string md5 = BuildHelper.GenerateMD5(file);
+                string value = file.Replace(dataPath, string.Empty);
+                sw.Write(value + "|" + md5);
             }
         }
 
