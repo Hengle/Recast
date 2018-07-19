@@ -6,10 +6,19 @@ namespace FrameWork
 	{
 		private AssetBundle m_AssetBundle;
 
+        /// <summary>
+        /// AssetBundle Name
+        /// </summary>
         private string m_Name;
 
+        /// <summary>
+        /// reference count
+        /// </summary>
 		private uint m_Count;
 
+        /// <summary>
+        /// 开始使用时间
+        /// </summary>
         private float m_StartTime;
 
         public bool persistent { get; set; }

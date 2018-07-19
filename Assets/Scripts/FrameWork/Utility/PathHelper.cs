@@ -1,27 +1,116 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using UnityEngine;
 
 namespace FrameWork
 {
     public static class PathHelper
     {
-        private static Dictionary<ResourcesType, string[]> m_DicResPath = new Dictionary<ResourcesType, string[]>(new ResourcesTypeComparer());
-
-        static PathHelper()
-        {
-            RegisterPath();
-        }
-
         public static string GetResourcePath(ResourcesType type, ResourcesPathMode mode)
         {
             int index = (int)mode;
-            string [] path;
-            if(!m_DicResPath.TryGetValue(type, out path))
+            string[] path = null;
+            switch (type)
             {
-                Debug.LogError(" GetResourcePath Error : " + type.ToString());
-                return string.Empty;
+                case ResourcesType.UIWnd:
+                    path = UIWndPath;
+                    break;
+                case ResourcesType.UIWndItem:
+                    path = UIWndItemPath;
+                    break;
+                case ResourcesType.UIAtlas:
+                    path = UIAtlasPath;
+                    break;
+                case ResourcesType.UIPublicWndAtlas:
+                    path = UIPublicAtlasPath;
+                    break;
+                case ResourcesType.SceneItem:
+                    path = SceneItemPath;
+                    break;
+
+                // hero
+                case ResourcesType.ActorHero:
+                    path = ActorHeroPath;
+                    break;
+                case ResourcesType.ActorShowHero:
+                    path = ActorHeroShowPath;
+                    break;
+                case ResourcesType.HeroAnim:
+                    path = HeroAnimPath;
+                    break;
+
+                // soldier
+                case ResourcesType.ActorSoldier:
+                    path = ActorSoldierPath;
+                    break;
+                case ResourcesType.ActorSoldierMaterial:
+                    path = ActorSoldierMaterialPath;
+                    break;
+                case ResourcesType.ActorSoldierMesh:
+                    path = ActorSoldierMeshPath;
+                    break;
+                case ResourcesType.ActorSoldierAnim:
+                    path = ActorSoldierAnimPath;
+                    break;
+
+                case ResourcesType.Building:
+                    path = BuildingPath;
+                    break;
+                case ResourcesType.BuildingModel:
+                    path = BuildingModelPath;
+                    break;
+                case ResourcesType.BuildingSite:
+                    path = BuildingSitePath;
+                    break;
+                case ResourcesType.CityTree:
+                    path = CityTreePath;
+                    break;
+                case ResourcesType.BuildingTexture:
+                    path = BuildingTexturePath;
+                    break;
+                case ResourcesType.PngTexture:
+                    path = PngTexturePath;
+                    break;
+
+                case ResourcesType.Effect:
+                    path = EffectPath;
+                    break;
+                case ResourcesType.Skill:
+                    path = SkillPath;
+                    break;
+                case ResourcesType.Audio:
+                    path = AudioPath;
+                    break;
+                case ResourcesType.Shader:
+                    path = ShaderPath;
+                    break;
+                case ResourcesType.Map:
+                    path = MapPath;
+                    break;
+                case ResourcesType.Scene:
+                    path = ScenePath;
+                    break;
+                case ResourcesType.MapData:
+                    path = MapDataPath;
+                    break;
+                case ResourcesType.LuaData:
+                    path = LuaDataPath;
+                    break;
+                case ResourcesType.ComMaterial:
+                    path = ComMaterialPath;
+                    break;
+                case ResourcesType.Depend:  //LightMapPath
+                    path = DependPath;
+                    break;
+                case ResourcesType.Config:
+                    path = ConfigPath;
+                    break;
             }
+
+            if (null == path)
+                return string.Empty;
 
             return path[index];
         }
@@ -31,46 +120,49 @@ namespace FrameWork
             return GetResourcePath(type, ResourcesPathMode.Extension);
         }
 
-        private static void RegisterPath()
+        public static string GetResourceFullPath(ResourcesType type, string name)
         {
-            m_DicResPath.Add(ResourcesType.UIWnd, new string[]{ "Data/wnd/panel/", "wnd/panel/", ".prefab"});
-            m_DicResPath.Add(ResourcesType.UIWndItem, new string[] { "Data/wnd/items/", "wnd/items/", ".prefab" });
-            m_DicResPath.Add(ResourcesType.UIAtlas, new string[] { "Data/Atlas/Items/", "atlas/item/", ".png" });
-            m_DicResPath.Add(ResourcesType.UIPublicWndAtlas, new string[] { "Data/Atlas/WndPublic/", "atlas/wndpublic/", ".png" });
-            m_DicResPath.Add(ResourcesType.SceneItem, new string[] { "Prefabs/sceneItem/", "SceneItem/", ".prefab" });
+            string path = GetResourcePath(type, ResourcesPathMode.Editor);
+            string extension = GetFileExtension(type);
 
-
-            m_DicResPath.Add(ResourcesType.ActorHero, new string[] { "Prefabs/Actor/Hero/", "hero/prefab/", ".prefab" });
-            m_DicResPath.Add(ResourcesType.ActorShowHero, new string[] { "Prefabs/Actor/HeroShow/", "showhero/prefab/", ".prefab" });
-            m_DicResPath.Add(ResourcesType.HeroAnim, new string[] { "Animations/Units/Hero/", "hero/anim/", ".anim" });
-
-            m_DicResPath.Add(ResourcesType.ActorSoldier, new string[] { "Prefabs/Actor/Soldier/", "soldier/prefab/", ".prefab" });
-            m_DicResPath.Add(ResourcesType.ActorSoldierMaterial, new string[] { "Art/Animations/Material/", "soldier/material/", ".mat" });
-            m_DicResPath.Add(ResourcesType.ActorSoldierMesh, new string[] { "Art/Animations/MeshAnimation/", "soldier/meshanimation/", ".asset" });
-            m_DicResPath.Add(ResourcesType.ActorSoldierAnim, new string[] { "Art/Animations/MeshAnimation/", "soldier/meshanimation/", ".asset" });
-
-
-            m_DicResPath.Add(ResourcesType.Building, new string[] { "Prefabs/Building/", "building/", ".prefab" });
-            m_DicResPath.Add(ResourcesType.BuildingModel, new string[] { "Prefabs/BuildingModel/", "buildingmodel/", ".prefab" });
-            m_DicResPath.Add(ResourcesType.BuildingSite, new string[] { "Prefabs/BuildingSite/", "buildingsite/", ".prefab" });
-            m_DicResPath.Add(ResourcesType.CityTree, new string[] { "Prefabs/TreeBlock/", "tree/", ".prefab" });
-            m_DicResPath.Add(ResourcesType.BuildingTexture, new string[] { "Models/Environment/Models/Environment/COL3Building/Textures/", "BuildingTexture/", ".tga" });
-            m_DicResPath.Add(ResourcesType.PngTexture, new string[] { "Textures/CommonPng/", "CommonTextures/Png/", ".png" });
-
-            m_DicResPath.Add(ResourcesType.Effect, new string[] { "Prefabs/Effect/", "effect/", ".prefab" });
-            m_DicResPath.Add(ResourcesType.Skill, new string[] { "Prefabs/Skill/", "skill/", ".prefab" });
-            m_DicResPath.Add(ResourcesType.Audio, new string[] { "Data/Audio/", "Audio/", ".ogg" });
-            m_DicResPath.Add(ResourcesType.Shader, new string[] { "Shader/Core/", "shader/", ".shader" });
-            m_DicResPath.Add(ResourcesType.Map, new string[] { "Prefabs/Map/", "map/", ".prefab" });
-            m_DicResPath.Add(ResourcesType.Scene, new string[] { "Scene/", "scene/", ".unity" });
-            m_DicResPath.Add(ResourcesType.MapData, new string[] { "Data/MapData/", "mapdata/", ".bytes" });
-            m_DicResPath.Add(ResourcesType.luaData, new string[] { "Scripts/lua/", "lua/", ".lua" });
-            m_DicResPath.Add(ResourcesType.ComMaterial, new string[] { "Materials/Common/", "common/material/", ".mat" });
-
-            m_DicResPath.Add(ResourcesType.Depend, new string[] { "depend", "depend/", ".prefab" });
-
-            m_DicResPath.Add(ResourcesType.Config, new string[] { "Data/config/", "config/", ".asset" });
+            return string.Format("{0}{1}{2}", path, name, extension);
         }
+
+        private static readonly string[] UIWndPath = { "Data/wnd/panel/", "wnd/panel/", ".prefab" };
+        private static readonly string[] UIWndItemPath = { "Data/wnd/items/", "wnd/items/", ".prefab" };
+        private static readonly string[] UIAtlasPath = { "Data/Atlas/Items/", "atlas/item/", ".png" };
+        private static readonly string[] UIPublicAtlasPath = { "Data/Atlas/WndPublic/", "atlas/wndpublic/", ".png" };
+        private static readonly string[] SceneItemPath = { "Prefabs/sceneItem/", "SceneItem/", ".prefab" };
+
+        private static readonly string[] ActorHeroPath = { "Prefabs/Actor/Hero/", "hero/prefab/", ".prefab" };
+        private static readonly string[] ActorHeroShowPath = { "Prefabs/Actor/HeroShow/", "showhero/prefab/", ".prefab" };
+        private static readonly string[] HeroAnimPath = { "Animations/Units/Hero/", "hero/anim/", ".anim" };
+
+        private static readonly string[] ActorSoldierPath = { "Prefabs/Actor/Soldier/", "soldier/prefab/", ".prefab" };
+        private static readonly string[] ActorSoldierMaterialPath = { "Art/Animations/Material/", "soldier/material/", ".mat" };
+        private static readonly string[] ActorSoldierMeshPath = { "Art/Animations/MeshAnimation/", "soldier/meshanimation/", ".asset" };
+        private static readonly string[] ActorSoldierAnimPath = { "Art/Animations/MeshAnimation/", "soldier/meshanimation/", ".asset" };
+
+        private static readonly string[] BuildingPath = { "Prefabs/Building/", "building/", ".prefab" };
+        private static readonly string[] BuildingModelPath = { "Prefabs/BuildingModel/", "buildingmodel/", ".prefab" };
+        private static readonly string[] BuildingSitePath = { "Prefabs/BuildingSite/", "buildingsite/", ".prefab" };
+        private static readonly string[] CityTreePath = { "Prefabs/TreeBlock/", "tree/", ".prefab" };
+        private static readonly string[] BuildingTexturePath = { "Models/Environment/Models/Environment/COL3Building/Textures/", "BuildingTexture/", ".tga" };
+        private static readonly string[] PngTexturePath = { "Textures/CommonPng/", "CommonTextures/Png/", ".png" };
+
+        private static readonly string[] EffectPath = { "Prefabs/Effect/", "effect/", ".prefab" };
+        private static readonly string[] SkillPath = { "Prefabs/Skill/", "skill/", ".prefab" };
+        private static readonly string[] AudioPath = { "Data/Audio/", "Audio/", ".ogg" };
+        private static readonly string[] ShaderPath = { "Shader/Core/", "shader/", ".shader" };
+        private static readonly string[] MapPath = { "Prefabs/Map/", "map/", ".prefab" };
+        private static readonly string[] ScenePath = { "Scene/", "scene/", ".unity" };
+        private static readonly string[] MapDataPath = { "Data/MapData/", "mapdata/", ".bytes" };
+        private static readonly string[] LuaDataPath = { "Scripts/lua/", "lua/", ".lua" };
+        private static readonly string[] ComMaterialPath = { "Materials/Common/", "common/material/", ".mat" };
+
+        private static readonly string[] DependPath = { "depend", "depend/", ".prefab" };
+
+        private static readonly string[] ConfigPath = { "Data/config/", "config/", ".asset" };
     }
 
     public enum ResourcesPathMode
@@ -78,19 +170,6 @@ namespace FrameWork
         Editor,
         AssetBundle,
         Extension
-    }
-
-    class ResourcesTypeComparer : IComparer<ResourcesType>
-    {
-        public int Compare(ResourcesType x, ResourcesType y)
-        {
-            if (x > y)
-                return -1;
-            else if (x == y)
-                return 0;
-
-            return 1;
-        }
     }
 
     public enum ResourcesType
@@ -128,7 +207,7 @@ namespace FrameWork
         Map,
         Scene,
         MapData,
-        luaData,
+        LuaData,
         ComMaterial,
 
         Depend,     //LightMapPath
