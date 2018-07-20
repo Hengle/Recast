@@ -10,11 +10,11 @@ namespace FrameWork.Editor
     public class ExportParameters
     {
         public float framerate = 30f;
-        public AnimationClip[] animationClips = new AnimationClip[0];
-        public string[] animationNames = new string[0];
-        public Transform[] boneTransforms = new Transform[0];
+        public AnimationClip[] animationClips;
+        public string[] animationNames;
+        public Transform[] boneTransforms;
         public Quaternion quaternionOffset = Quaternion.identity;
-        public string[] boneNames = new string[0];
+        public string[] boneNames;
         public string outputFolderPath;
         public string outputFilePath;
     }
@@ -54,14 +54,21 @@ namespace FrameWork.Editor
         public static ExportParameters GenerateDefaultSettings(GameObject pFbxInstance)
         {
             ExportParameters settings = new ExportParameters();
-            ReadAnimationSettingsFromFbx(pFbxInstance, ref settings);
+            ParseClipInfoFromFbx(pFbxInstance, ref settings);
             PredictSettings(pFbxInstance, ref settings);
             return settings;
         }
 
-        public static void ReadAnimationSettingsFromFbx(GameObject pFbxInstance, ref ExportParameters pSettings)
+        /// <summary>
+        /// obtain：
+        ///     animation clips
+        ///     animation names 
+        /// </summary>
+        /// <param name="pFbxInstance"></param>
+        /// <param name="pSettings"></param>
+        public static void ParseClipInfoFromFbx(GameObject fbx, ref ExportParameters param)
         {
-            GameObject go = GameObject.Instantiate(pFbxInstance) as GameObject;
+            GameObject go = GameObject.Instantiate(fbx) as GameObject;
             Animation animation = go.GetComponentInChildren<Animation>();
             if (!animation)
             {
@@ -73,21 +80,20 @@ namespace FrameWork.Editor
             int index = 0;
             var animationClips = new AnimationClip[clipCount];
             var animationNames = new string[clipCount];
-
-            var cli = animation.GetClip("idle");
+            
             foreach (AnimationState state in animation)
             {
                 animationClips[index] = state.clip;
                 animationNames[index] = state.clip.name.Capitalize();
-                index++;
+                ++ index;
             }
             GameObject.DestroyImmediate(go);
 
-            pSettings.animationClips = animationClips;
-            pSettings.animationNames = animationNames;
+            param.animationClips = animationClips;
+            param.animationNames = animationNames;
         }
 
-        public static void PredictSettings(GameObject pObjectRoot, ref ExportParameters pSettings)
+        public static void PredictSettings(GameObject pObjectRoot, ref ExportParameters param)
         {
             string prefabPath = pObjectRoot == null ? "" : AssetDatabase.GetAssetPath(PrefabUtility.GetPrefabParent(pObjectRoot));
             if (prefabPath.Length == 0)
@@ -102,8 +108,8 @@ namespace FrameWork.Editor
                 return;
             }
 
-            PredictOutputPath(pObjectRoot, prefabPath, ref pSettings);
-            PredictEmitterAnchors(pObjectRoot, ref pSettings);
+            PredictOutputPath(pObjectRoot, prefabPath, ref param);
+            PredictEmitterAnchors(pObjectRoot, ref param);
         }
 
         private static void PredictOutputPath(GameObject pObjectRoot, string prefabPath, ref ExportParameters pSettings)
@@ -147,7 +153,13 @@ namespace FrameWork.Editor
             pSettings.boneTransforms = emitterAnchors;
             pSettings.boneNames = emitterAnchorNames;
         }
-
+        
+        /// <summary>
+        /// generic:
+        ///     file format :  x_x_x
+        /// </summary>
+        /// <param name="pInput"></param>
+        /// <returns></returns>
         private static string convertStringToFileFormat(string pInput)
         {
             System.Text.StringBuilder result = new System.Text.StringBuilder();
@@ -213,13 +225,10 @@ namespace FrameWork.Editor
             Mesh[] meshArray = new Mesh[arrayLength];
             for (int i = 0; i < arrayLength; i++)
             {
-
                 meshArray[i] = renderArray[i].sharedMesh;
             }
 
-
             float frameInterval = 1.0f / pSettings.framerate;
-
 
             //清空并重建目标目录
             if (!System.IO.Directory.Exists(pSettings.outputFilePath))
@@ -244,7 +253,6 @@ namespace FrameWork.Editor
 
             int aniFrameCount = 0;
 
-
             //pre cacl the length of all frames
             for (int i = 0; i < exportClips.Length; i++)
             {
@@ -263,9 +271,6 @@ namespace FrameWork.Editor
                 // Get the list of times for each frame
                 List<float> frameTimes = GetFrameTimes(clipLength, frameInterval);
                 aniFrameCount += frameTimes.Count;
-
-
-
             }
 
             totalframeCount += aniFrameCount * arrayLength;
@@ -278,12 +283,7 @@ namespace FrameWork.Editor
                 vertexCount[i] = count;
                 if (count > maxVertexCount)
                     maxVertexCount = count;
-
-
             }
-
-
-
 
             Vector3[][] defaultAnimationInfos = new Vector3[arrayLength][];
             for (int i = 0; i < arrayLength; i++)
@@ -293,7 +293,6 @@ namespace FrameWork.Editor
                 {
                     defaultAnimationInfos[i][j] = new Vector3(0, 0, 0);
                 }
-
             }
 
             string[] defaultAnimationArray = new string[] { "Attack1", "Attack2", "Dead", "Hit", "Run", "Skill1", "Wait1", "Wait2" };
@@ -301,31 +300,19 @@ namespace FrameWork.Editor
             for (int i = 0; i < defaultAnimationArray.Length; i++)
             {
                 defaultAnimationList.Add(defaultAnimationArray[i].ToUpper());
-
             }
-
 
             Texture2D combinedTex = new Texture2D(maxVertexCount, totalframeCount, TextureFormat.RGBAHalf, false);
 
-
             combinedTex.SetPixel(0, 0, new Color(arrayLength, maxVertexCount, 0));
-
 
             int countData = 1 + arrayLength;
 
             for (int i = 0; i < arrayLength; i++)
             {
                 combinedTex.SetPixel(i + 1, 0, new Color(vertexCount[i], 0, 0));
-
-
                 countData += meshArray[i].uv.Length / 2 + meshArray[i].triangles.Length / 3;
             }
-
-
-
-
-
-
 
             //////配置纹理 fps uv count, uv, tri count tri
 
@@ -342,12 +329,7 @@ namespace FrameWork.Editor
             for (int i = 0; i < arrayLength; i++)
             {
                 colors[cfgDataIdx++] = new Color(pSettings.framerate, meshArray[i].uv.Length, meshArray[i].triangles.Length);
-
             }
-
-
-
-
 
             int frame = 1 + arrayLength;
 
@@ -384,7 +366,6 @@ namespace FrameWork.Editor
                     {
                         infoIdx = defaultAnimationList.IndexOf(upperName);
                         defaultAnimationInfos[submeshCount][infoIdx].x = 1;
-
                     }
 
                     animation.AddClip(clip, clip.name);
@@ -431,8 +412,6 @@ namespace FrameWork.Editor
 
                             boneGroup.bones[name].positions.Add(pos);
                             boneGroup.bones[name].rotations.Add(rot);
-
-
                         }
 
                         Mesh bakeMesh = null;
@@ -464,11 +443,7 @@ namespace FrameWork.Editor
                     }
                     //end frame position,exclude
                     defaultAnimationInfos[submeshCount][infoIdx].z = frame;
-
-
-
                 }
-
 
                 for (int i = 0; i < meshArray[submeshCount].uv.Length / 2; i++)
                 {
@@ -481,28 +456,18 @@ namespace FrameWork.Editor
                     int triIdx = i * 3;
                     colors[cfgDataIdx++] = new Color(meshArray[submeshCount].triangles[triIdx], meshArray[submeshCount].triangles[triIdx + 1], meshArray[submeshCount].triangles[triIdx + 2]);
                 }
-
             }
-
-
 
             //group.AddAnimation(animationNames[i], frameVertices, boneGroup);
 
 
             for (int j = 0; j < arrayLength; j++)
             {
-
                 for (int i = 0; i < 8; i++)
                 {
                     combinedTex.SetPixel(i, j + 1, new Color(defaultAnimationInfos[j][i].x, defaultAnimationInfos[j][i].y, defaultAnimationInfos[j][i].z));
                 }
-
             }
-
-
-
-
-
 
             combinedTex.Apply(false);
 
@@ -706,6 +671,7 @@ namespace FrameWork.Editor
             if (newFbx != null && newFbx != m_GoFBX)
             {
                 // error if they drag the prefab itself, since it won't have any transform data
+                // 必须是挂载在场景中的 GameObject
                 if (PrefabUtility.GetPrefabParent(newFbx) != null)
                 {
                     m_GoFBX = newFbx;
