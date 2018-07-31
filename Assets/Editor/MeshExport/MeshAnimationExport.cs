@@ -1,9 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
-using System.Linq;
 
 namespace FrameWork.Editor
 {
@@ -27,8 +26,14 @@ namespace FrameWork.Editor
 
         public MeshAnimationBoneTransform()
         {
-            this.positions = new List<Vector3>();
-            this.rotations = new List<Quaternion>();
+            this.positions = ListPool<Vector3>.Get();
+            this.rotations = ListPool<Quaternion>.Get();
+        }
+
+        ~MeshAnimationBoneTransform()
+        {
+            ListPool<Vector3>.Release(this.positions);
+            ListPool<Quaternion>.Release(this.rotations);
         }
     }
 
@@ -54,7 +59,7 @@ namespace FrameWork.Editor
         public static ExportParameters GenerateDefaultSettings(GameObject pFbxInstance)
         {
             ExportParameters settings = new ExportParameters();
-            ParseClipInfoFromFbx(pFbxInstance, ref settings);
+            ParseAnimationInfo(pFbxInstance, ref settings);
             PredictSettings(pFbxInstance, ref settings);
             return settings;
         }
@@ -66,7 +71,7 @@ namespace FrameWork.Editor
         /// </summary>
         /// <param name="pFbxInstance"></param>
         /// <param name="pSettings"></param>
-        public static void ParseClipInfoFromFbx(GameObject fbx, ref ExportParameters param)
+        public static void ParseAnimationInfo(GameObject fbx, ref ExportParameters param)
         {
             GameObject go = GameObject.Instantiate(fbx) as GameObject;
             Animation animation = go.GetComponentInChildren<Animation>();
