@@ -16,8 +16,8 @@ namespace FrameWork
 
 		
 		void CastSkill();
-
-		bool isAlived{get;set;}
+		
+		bool isAlived{ get; set; }
 	}
 }
 

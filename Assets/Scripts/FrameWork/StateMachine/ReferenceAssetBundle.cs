@@ -1,19 +1,40 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace FrameWork
 {
-	public class ReferenceAssetBundle : System.IDisposable
+    public class ReferenceAssetBundle : System.IDisposable
 	{
 		private AssetBundle m_AssetBundle;
 
+        /// <summary>
+        /// AssetBundle Name
+        /// </summary>
+        private string m_Name;
+
+        /// <summary>
+        /// reference count
+        /// </summary>
 		private uint m_Count;
 
-		public ReferenceAssetBundle(AssetBundle assetBundle)
+        /// <summary>
+        /// 开始使用时间
+        /// </summary>
+        private float m_StartTime;
+
+        public bool persistent { get; set; }
+
+        public AssetBundle assetBundle { get { return m_AssetBundle; } }
+
+        public uint refCount { get { return m_Count; } }
+
+		public ReferenceAssetBundle(string name, AssetBundle assetBundle, bool persistent, uint count = 1)
 		{
+            m_Name = name;
 			m_AssetBundle = assetBundle;
-		}
+            m_Count = count;
+            m_StartTime = Time.realtimeSinceStartup;
+
+        }
 
 		public void Dispose()
 		{

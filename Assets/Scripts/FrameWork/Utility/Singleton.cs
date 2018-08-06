@@ -1,29 +1,34 @@
-﻿namespace FrameWork.Utility
+﻿using FrameWork;
+
+namespace FrameWork.Utility
 {
     /// <summary>
     /// Hierarch this class to make sure the class only have a instance
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class Singleton<T> where T : Singleton<T>
+    public class Singleton<T> : Disposable where T : Singleton<T>
     {
         private static T s_Instance;
 
         private static object helper_lock = new object();
 
-        public static T GetInstance()
+        public static T instance
         {
-            if(null == s_Instance)
+            get
             {
-                lock (helper_lock)
+                if (null == s_Instance)
                 {
-                    if(null == s_Instance)
+                    lock (helper_lock)
                     {
-                        s_Instance = System.Activator.CreateInstance<T>();
+                        if (null == s_Instance)
+                        {
+                            s_Instance = System.Activator.CreateInstance<T>();
+                        }
                     }
                 }
-            }
 
-            return s_Instance;
+                return s_Instance;
+            }
         }
     }
 }
